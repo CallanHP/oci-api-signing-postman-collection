@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "9379ea92-b020-493a-b331-14a20131fa1d",
+		"_postman_id": "7f5456d4-e0b9-467b-b1cd-48a617b053e6",
 		"name": "OCI - API Signing Example",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -62,6 +62,358 @@
 					"path": [
 						"20160918",
 						"instances"
+					],
+					"query": [
+						{
+							"key": "compartmentId",
+							"value": "{{compartment-id}}"
+						},
+						{
+							"key": "limit",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OCI - List Compartments",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1f8df47c-70b5-44aa-8127-9d443c146d7f",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{auth-signature}}"
+					},
+					{
+						"key": "hostname",
+						"type": "text",
+						"value": "{{hostname}}"
+					},
+					{
+						"key": "date",
+						"type": "text",
+						"value": "{{request-date}}"
+					},
+					{
+						"key": "Content-Length",
+						"type": "text",
+						"value": "{{content-length}}",
+						"disabled": true
+					},
+					{
+						"key": "x-content-sha256",
+						"type": "text",
+						"value": "{{content-sha256}}",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://identity.{{region}}.oraclecloud.com/20160918/compartments/?compartmentId={{tenancy-id}}&limit=20",
+					"protocol": "https",
+					"host": [
+						"identity",
+						"{{region}}",
+						"oraclecloud",
+						"com"
+					],
+					"path": [
+						"20160918",
+						"compartments",
+						""
+					],
+					"query": [
+						{
+							"key": "compartmentId",
+							"value": "{{tenancy-id}}"
+						},
+						{
+							"key": "limit",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OCI - Get Compartment Details",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1f8df47c-70b5-44aa-8127-9d443c146d7f",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{auth-signature}}"
+					},
+					{
+						"key": "hostname",
+						"type": "text",
+						"value": "{{hostname}}"
+					},
+					{
+						"key": "date",
+						"type": "text",
+						"value": "{{request-date}}"
+					},
+					{
+						"key": "Content-Length",
+						"type": "text",
+						"value": "{{content-length}}",
+						"disabled": true
+					},
+					{
+						"key": "x-content-sha256",
+						"type": "text",
+						"value": "{{content-sha256}}",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://identity.{{region}}.oraclecloud.com/20160918/compartments/{{compartment-id}}",
+					"protocol": "https",
+					"host": [
+						"identity",
+						"{{region}}",
+						"oraclecloud",
+						"com"
+					],
+					"path": [
+						"20160918",
+						"compartments",
+						"{{compartment-id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OCI - List Autonomous Databases In Compartment",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1f8df47c-70b5-44aa-8127-9d443c146d7f",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{auth-signature}}"
+					},
+					{
+						"key": "hostname",
+						"type": "text",
+						"value": "{{hostname}}"
+					},
+					{
+						"key": "date",
+						"type": "text",
+						"value": "{{request-date}}"
+					},
+					{
+						"key": "Content-Length",
+						"type": "text",
+						"value": "{{content-length}}",
+						"disabled": true
+					},
+					{
+						"key": "x-content-sha256",
+						"type": "text",
+						"value": "{{content-sha256}}",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://database.{{region}}.oraclecloud.com/20160918/autonomousDatabases?compartmentId={{compartment-id}}&limit=20",
+					"protocol": "https",
+					"host": [
+						"database",
+						"{{region}}",
+						"oraclecloud",
+						"com"
+					],
+					"path": [
+						"20160918",
+						"autonomousDatabases"
+					],
+					"query": [
+						{
+							"key": "compartmentId",
+							"value": "{{compartment-id}}"
+						},
+						{
+							"key": "limit",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OCI - Stop Autonomous Database",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1f8df47c-70b5-44aa-8127-9d443c146d7f",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{auth-signature}}"
+					},
+					{
+						"key": "hostname",
+						"type": "text",
+						"value": "{{hostname}}"
+					},
+					{
+						"key": "date",
+						"type": "text",
+						"value": "{{request-date}}"
+					},
+					{
+						"key": "Content-Length",
+						"type": "text",
+						"value": "{{content-length}}"
+					},
+					{
+						"key": "x-content-sha256",
+						"type": "text",
+						"value": "{{content-sha256}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://database.{{region}}.oraclecloud.com/20160918/autonomousDatabases/{{database-id}}/actions/stop",
+					"protocol": "https",
+					"host": [
+						"database",
+						"{{region}}",
+						"oraclecloud",
+						"com"
+					],
+					"path": [
+						"20160918",
+						"autonomousDatabases",
+						"{{database-id}}",
+						"actions",
+						"stop"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OCI - List Container Databases In Compartment",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1f8df47c-70b5-44aa-8127-9d443c146d7f",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{auth-signature}}"
+					},
+					{
+						"key": "hostname",
+						"type": "text",
+						"value": "{{hostname}}"
+					},
+					{
+						"key": "date",
+						"type": "text",
+						"value": "{{request-date}}"
+					},
+					{
+						"key": "Content-Length",
+						"type": "text",
+						"value": "{{content-length}}",
+						"disabled": true
+					},
+					{
+						"key": "x-content-sha256",
+						"type": "text",
+						"value": "{{content-sha256}}",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://database.{{region}}.oraclecloud.com/20160918/autonomousContainerDatabases?compartmentId={{compartment-id}}&limit=20",
+					"protocol": "https",
+					"host": [
+						"database",
+						"{{region}}",
+						"oraclecloud",
+						"com"
+					],
+					"path": [
+						"20160918",
+						"autonomousContainerDatabases"
 					],
 					"query": [
 						{
@@ -244,7 +596,7 @@
 					"",
 					"    var methodsThatRequireExtraHeaders = [\"POST\", \"PUT\"];",
 					"    if(methodsThatRequireExtraHeaders.indexOf(request.method.toUpperCase()) !== -1) {",
-					"        var body = request.data?replaceEnvironmentVarsInString(request.data):\"\";",
+					"        var body = request.data && typeof request.data == 'string' ?replaceEnvironmentVarsInString(request.data):\"\";",
 					"        //Calculate the hash of the body, then set a variable for it.",
 					"        var sha256digest = CryptoJS.enc.Base64.stringify(CryptoJS.SHA256(body));",
 					"        headersToSign = headersToSign.concat([",
@@ -320,5 +672,6 @@
 				]
 			}
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }
