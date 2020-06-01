@@ -11,7 +11,7 @@ The script requires several variable to be populated to facilitate the signing p
 
 Requests in the collection are provided as samples, and may require additional variables, such as `region`, `compartment-id`, etc. to be set.
 
-In addition, the script sets the following environment variables during invocation for reach request, so be careful not to override them or rely on them in your own environment:
+In addition, the script sets the following environment variables during invocation for each request, so be careful not to override them or rely on them in your own environment:
 
 * `auth-signature`
 * `hostname`
