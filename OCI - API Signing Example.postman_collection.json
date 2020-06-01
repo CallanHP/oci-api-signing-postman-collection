@@ -329,8 +329,8 @@
 					},
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"type": "text",
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -407,7 +407,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"type\": \"Structured\",\r\n  \"query\": \"query autonomousDatabase resources where compartmentId = 'ocid1.compartment.oc1..aaaaaaaapd4p2g32xjmnnqyxddw44kjnzqrs6tgjodxiancoxyhzdjz6tgnq'\"\r\n}"
+					"raw": "{\r\n  \"type\": \"Structured\",\r\n  \"query\": \"query autonomousDatabase resources where compartmentId = '{{compartment-id}}'\"\r\n}"
 				},
 				"url": {
 					"raw": "https://query.{{region}}.oraclecloud.com/20180409/resources",
@@ -615,6 +615,77 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "OCI - Get Secret Bundle",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1f8df47c-70b5-44aa-8127-9d443c146d7f",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{auth-signature}}"
+					},
+					{
+						"key": "hostname",
+						"type": "text",
+						"value": "{{hostname}}"
+					},
+					{
+						"key": "date",
+						"type": "text",
+						"value": "{{request-date}}"
+					},
+					{
+						"key": "Content-Length",
+						"type": "text",
+						"value": "{{content-length}}",
+						"disabled": true
+					},
+					{
+						"key": "x-content-sha256",
+						"type": "text",
+						"value": "{{content-sha256}}",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://secrets.vaults.{{region}}.oci.oraclecloud.com/20190301/secretbundles/{{secret-id}}",
+					"protocol": "https",
+					"host": [
+						"secrets",
+						"vaults",
+						"{{region}}",
+						"oci",
+						"oraclecloud",
+						"com"
+					],
+					"path": [
+						"20190301",
+						"secretbundles",
+						"{{secret-id}}"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
@@ -718,9 +789,9 @@
 					"        \"date\": nowDate",
 					"    };",
 					"    //Set environment variables for each of these, so they can be referenced in the call",
-					"    pm.variables.set('request-date', nowDate);",
-					"    pm.variables.set('hostname', hostname);",
-					"    pm.variables.set('request-target', reqTarget);",
+					"    pm.environment.set('request-date', nowDate);",
+					"    pm.environment.set('hostname', hostname);",
+					"    pm.environment.set('request-target', reqTarget);",
 					"",
 					"    var methodsThatRequireExtraHeaders = [\"POST\", \"PUT\"];",
 					"    if (methodsThatRequireExtraHeaders.indexOf(request.method.toUpperCase()) !== -1) {",
@@ -736,8 +807,8 @@
 					"        headerSigningValues[\"content-length\"] = body.length;",
 					"        headerSigningValues[\"x-content-sha256\"] = sha256digest;",
 					"        //Set environment variables for these ones too",
-					"        pm.variables.set('content-length', body.length);",
-					"        pm.variables.set('content-sha256', sha256digest);",
+					"        pm.environment.set('content-length', body.length);",
+					"        pm.environment.set('content-sha256', sha256digest);",
 					"    }",
 					"    //Establish the signing string",
 					"    var signingBase = '';",
@@ -767,7 +838,7 @@
 					"        signature = signature.replace(pattern, value);",
 					"    });",
 					"    //Set the environment variable for the signature, ready for sending!",
-					"    pm.variables.set('auth-signature', signature);",
+					"    pm.environment.set('auth-signature', signature);",
 					"}",
 					"",
 					"//Validate the environment variables before we sign.",
