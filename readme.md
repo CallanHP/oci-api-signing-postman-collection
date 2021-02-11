@@ -2,7 +2,7 @@
 
 This Postman collection uses pre-request scripts to assemble the signatures required to invoke the OCI APIs. It is intended to allow for Postman to be used for ad-hoc API testing as part of the development of management and monitoring scripts and infrastructure automation.
 
-The script requires several variable to be populated to facilitate the signing process:
+An environment file has been provided, and while it has a number of optional fields, the script requires several of these variables to be populated to facilitate the signing process:
 
 * `private-key` - the signing key in PEM format
 * `key-fingerprint` - the fingerprint of the uploaded public cert matching the private key
