@@ -1,3 +1,7 @@
+> [!IMPORTANT]  
+> This collection is no longer being maintained. Oracle provides and maintains [a Postman workspace for Oracle Cloud Infrastructure](https://www.postman.com/oracledevs/workspace/oracle-cloud-infrastructure-rest-apis/overview), with much wider API coverage that is likely going to provide a better experience overall.
+> It is strongly recommended that you migrate to that implementation instead.
+
 ### OCI API Signing Postman Collection
 
 This Postman collection uses pre-request scripts to assemble the signatures required to invoke the OCI APIs. It is intended to allow for Postman to be used for ad-hoc API testing as part of the development of management and monitoring scripts and infrastructure automation.
